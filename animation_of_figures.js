@@ -1,19 +1,19 @@
-canvas.width = document.body.clientWidth;
-canvas.height = 1.1 * document.body.clientHeight;
+canvas.width = document.documentElement.clientWidth;
+canvas.height = 1.1 * document.documentElement.clientHeight;
 
-hidden_canvas.width = document.body.clientWidth;
-hidden_canvas.height = 1.1 * document.body.clientHeight;
+hidden_canvas.width = document.documentElement.clientWidth;
+hidden_canvas.height = 1.1 * document.documentElement.clientHeight;
 
 let gap_width = canvas.width / 25;
 let gap_height = canvas.height / 25;
 let coordinate = [];
-for (let i = 0; i < 24; i++){
-for (let j = 0; j < 24; j++){
+for (let i = 0; i < 26; i++){
+for (let j = 0; j < 25; j++){
 let rand = Math.floor(Math.random() * 10) % 3;
 let direction = Math.floor(Math.random() * 10) % 2;
 let initial_state = +(Math.random() * 10).toFixed(3);
 let initial_degree = +(Math.random() * 10).toFixed(3);
-coordinate.push([(i+1)*gap_width, (j+1)*gap_height, rand, direction, initial_state, initial_degree]); // [координата по x, координата по y, тип фигуры, движение по горизонтали или по вертикали, начальное положение для смещения, начальное положение поворота]
+coordinate.push([(i)*gap_width, (j)*gap_height, rand, direction, initial_state, initial_degree]); // [координата по x, координата по y, тип фигуры, движение по горизонтали или по вертикали, начальное положение для смещения, начальное положение поворота]
 } 
 }
 
@@ -36,9 +36,9 @@ let triangle1_radius = 10;
 
 ctx.strokeStyle = '#ffee00';
 ctx.beginPath();
-ctx.moveTo(triangle1_center_x + Math.sin(dot[5] + i*Math.PI/180)*triangle1_radius, triangle1_center_y + Math.cos(dot[5] + i*Math.PI/180)*triangle1_radius);
-ctx.lineTo(Math.sin(dot[5] + 2* Math.PI / 3 + i*Math.PI/180)*triangle1_radius + triangle1_center_x, Math.cos(dot[5] + 2 * Math.PI / 3 + i*Math.PI/180)*triangle1_radius + triangle1_center_y);
-ctx.lineTo(Math.sin(dot[5] + 4 * Math.PI / 3 + i*Math.PI/180)*triangle1_radius + triangle1_center_x, Math.cos(dot[5] + 4 * Math.PI / 3 + i*Math.PI/180)*triangle1_radius + triangle1_center_y);
+ctx.moveTo(triangle1_center_x + Math.cos(dot[5] + Math.PI / 2 + i*Math.PI/180)*triangle1_radius, triangle1_center_y + Math.sin(dot[5] + Math.PI / 2 + i*Math.PI/180)*triangle1_radius);
+ctx.lineTo(Math.cos(dot[5] + 7 * Math.PI / 6 + i*Math.PI/180)*triangle1_radius + triangle1_center_x, Math.sin(dot[5] + 7 * Math.PI / 6 + i*Math.PI/180)*triangle1_radius + triangle1_center_y);
+ctx.lineTo(Math.cos(dot[5] + 11 * Math.PI / 6 + i*Math.PI/180)*triangle1_radius + triangle1_center_x, Math.sin(dot[5] + 11 * Math.PI / 6 + i*Math.PI/180)*triangle1_radius + triangle1_center_y);
 ctx.closePath();
 ctx.fillStyle = '#ffee00';
 ctx.fill();
@@ -53,10 +53,10 @@ let square1_radius = 10;
 
 ctx.strokeStyle = '#4dff00';
 ctx.beginPath();
-ctx.moveTo(square1_center_x + Math.sin(-Math.PI / 4 + i*Math.PI/180 + dot[5])*square1_radius, square1_center_y + Math.cos(-Math.PI / 4 + i*Math.PI/180 + dot[5])*square1_radius);
-ctx.lineTo(square1_center_x + Math.sin(Math.PI / 4 + i*Math.PI/180 + dot[5])*square1_radius, square1_center_y + Math.cos(Math.PI / 4 + i*Math.PI/180 + dot[5])*square1_radius);
-ctx.lineTo(square1_center_x + Math.sin(3*Math.PI / 4 + i*Math.PI/180 + dot[5])*square1_radius, square1_center_y + Math.cos(3*Math.PI / 4 + i*Math.PI/180 + dot[5])*square1_radius);
-ctx.lineTo(square1_center_x + Math.sin(5*Math.PI / 4 + i*Math.PI/180 + dot[5])*square1_radius, square1_center_y + Math.cos(5*Math.PI / 4 + i*Math.PI/180 + dot[5])*square1_radius);
+ctx.moveTo(square1_center_x + Math.cos(-Math.PI / 4 + i*Math.PI/180 + dot[5])*square1_radius, square1_center_y + Math.sin(-Math.PI / 4 + i*Math.PI/180 + dot[5])*square1_radius);
+ctx.lineTo(square1_center_x + Math.cos(Math.PI / 4 + i*Math.PI/180 + dot[5])*square1_radius, square1_center_y + Math.sin(Math.PI / 4 + i*Math.PI/180 + dot[5])*square1_radius);
+ctx.lineTo(square1_center_x + Math.cos(3*Math.PI / 4 + i*Math.PI/180 + dot[5])*square1_radius, square1_center_y + Math.sin(3*Math.PI / 4 + i*Math.PI/180 + dot[5])*square1_radius);
+ctx.lineTo(square1_center_x + Math.cos(5*Math.PI / 4 + i*Math.PI/180 + dot[5])*square1_radius, square1_center_y + Math.sin(5*Math.PI / 4 + i*Math.PI/180 + dot[5])*square1_radius);
 ctx.closePath();
 ctx.fillStyle = '#4dff00';
 ctx.fill();
